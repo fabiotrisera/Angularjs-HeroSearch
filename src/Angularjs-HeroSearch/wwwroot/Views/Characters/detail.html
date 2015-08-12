@@ -1,0 +1,74 @@
+﻿<div>
+    <table class="table table-striped table-bordered" ng-repeat="char in character">
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <div class="media">
+                        <div class="media-body">
+                            <h3 class="media-heading">{{char.Name}}</h3>
+                        </div>
+                        <div class="media-right">
+                            <img ng-src="{{char.ImageUrl}}" class="media-object character-thumbnail" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-show="char.Description !== ''">
+                <th>Description</th>
+                <td>{{char.Description}}</td>
+            </tr>
+            <tr ng-show="comics.length > 0">
+                <th>Comics</th>
+                <td>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3 comic-list" ng-repeat="comic in comics">
+                            <a href="#" class="thumbnail">
+                                <img ng-src="{{comic.ImageUrl}}" />
+                                <div class="caption">
+                                    {{comic.Title}}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </td>
+            </tr>
+            <tr ng-show="char.Events.length > 0">
+                <th>Events</th>
+                <td>
+                    <ul>
+                        <li ng-repeat="event in char.Events">
+                            <a ng-href="/Event/{{event.EventId}}">
+                                {{event.EventName}}
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr ng-show="char.Series.length > 0">
+                <th>Series</th>
+                <td>
+                    <ul>
+                        <li ng-repeat="series in char.Series">
+                            <a ng-href="/series/{{series.SeriesId}}">
+                                {{series.SeriesName}}
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr ng-show="char.Stories.length > 0">
+                <th>Stories</th>
+                <td>
+                    <ul>
+                        <li ng-repeat="story in char.Stories">
+                            <a ng-href="/story/{{story.StoryId}}">
+                                {{story.StoryName}}
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

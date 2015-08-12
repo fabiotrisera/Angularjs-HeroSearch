@@ -1,0 +1,10 @@
+.character-list-rows.ng-enter {
+  animation: fadeInUp 1s;
+  background-color: none;
+}
+.character-list-rows.ng-enter td {
+  border: none;
+}
+.comic-list.ng-enter {
+  animation: zoomIn 1s;
+}
