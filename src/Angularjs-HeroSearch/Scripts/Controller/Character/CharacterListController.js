@@ -20,7 +20,7 @@
         };
 
         $scope.detail = function (id) {
-            $location.path("/Character/" + id);
+            $location.path("/Characters/" + id);
         };
 
     }

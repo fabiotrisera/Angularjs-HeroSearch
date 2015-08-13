@@ -13,11 +13,15 @@
             templateUrl: '/Views/Characters/List.html',
             controller: 'CharacterListController'
         })
-        .when("/Character/:characterId", {
+        .when("/Characters/:characterId", {
             templateUrl: 'Views/Characters/Detail.html',
             controller: 'CharacterDetailController'
         })
-        .when("/Comic/:comicId", {
+        .when("/Comics", {
+            templateUrl: 'Views/Comics/List.html',
+            controller: 'ComicListController'
+        })
+        .when("/Comics/:comicId", {
             templateUrl: 'Views/Comics/Detail.html',
             controller: 'ComicDetailController'
         });
