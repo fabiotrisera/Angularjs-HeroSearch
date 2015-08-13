@@ -19,7 +19,7 @@
                                 Id: item.id,
                                 Title: item.title,
                                 Description: item.description,
-                                ImageUrl: item.thumbnail != null? item.thumbnail.path + "." + item.thumbnail.extension : "/image/image_not_available.jpg"
+                                ImageUrl: item.thumbnail !== null? item.thumbnail.path + "." + item.thumbnail.extension : "/image/image_not_available.jpg"
                             };
                         });
                     },

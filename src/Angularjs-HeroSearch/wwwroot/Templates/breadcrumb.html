@@ -1,0 +1,6 @@
+﻿<ol class="breadcrumb">
+    <li ng-class="{ active : crumb.Url == '' }" ng-repeat="crumb in crumbs">
+        <a ng-if="crumb.Url != ''" ng-href="{{crumb.Url}}"><span>{{crumb.Text}}</span></a>
+        <span ng-if="crumb.Url == ''">{{crumb.Text}}</span>
+    </li>
+</ol>

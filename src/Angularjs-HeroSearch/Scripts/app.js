@@ -4,7 +4,7 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
 
     angular.module('MarvelApp', [
-           'ngRoute', 'ngAnimate' , 'CharacterService', 'ComicService'
+           'ngRoute', 'ngAnimate', 'CharacterService', 'ComicService'
         ]).config(config);
 
     function config($routeProvider, $locationProvider){
@@ -16,6 +16,10 @@
         .when("/Character/:characterId", {
             templateUrl: 'Views/Characters/Detail.html',
             controller: 'CharacterDetailController'
+        })
+        .when("/Comic/:comicId", {
+            templateUrl: 'Views/Comics/Detail.html',
+            controller: 'ComicDetailController'
         });
 
         $locationProvider.html5Mode(true);

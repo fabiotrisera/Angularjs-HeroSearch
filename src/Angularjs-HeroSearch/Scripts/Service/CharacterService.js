@@ -16,12 +16,11 @@
                         var res = angular.fromJson(response);
 
                         return $.map(res.data.results, function (item) {
-                            console.log(item);
                             return {
                                 Id: item.id,
                                 Name: item.name,
                                 Description: item.description,
-                                ImageUrl: item.thumbnail != null ? item.thumbnail.path + "." + item.thumbnail.extension : "/Images/image_not_available.jpg",
+                                ImageUrl: item.thumbnail !== null ? item.thumbnail.path + "." + item.thumbnail.extension : "/Images/image_not_available.jpg",
                                 Comics: $.map(item.comics.items, function (comic) {
                                     return {
                                         ComicName: comic.name,

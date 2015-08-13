@@ -8,11 +8,15 @@
     CharacterDetailController.$inject = ['$scope', '$routeParams', 'Characters', 'Comics'];
 
     function CharacterDetailController($scope, $routeParams, Characters, Comics) {
-        Characters.query({ characterId: $routeParams.characterId }, function (character) {
+        Characters.query({ characterId: $routeParams.characterId }, function (characters) {
             activate();
-            $scope.character = character;
 
-            angular.forEach($scope.character[0].Comics, function (comic) {
+            $scope.character = characters[0];
+            $scope.crumbs = [
+                { Text: "Characters", Url: "/" },
+                { Text: $scope.character.Name, Url: "" }];
+
+            angular.forEach($scope.character.Comics, function (comic) {
                 Comics.query({ comicId: comic.ComicId }, function (comicDetail) {
                     $scope.comics.push({
                         Title: comicDetail[0].Title,
@@ -27,6 +31,7 @@
         function activate() {
             $scope.character = {};
             $scope.comics = [];
+            $scope.crumbs = [];
         }
     }
 })();
