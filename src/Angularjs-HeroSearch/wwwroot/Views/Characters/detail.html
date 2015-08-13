@@ -24,7 +24,7 @@
                 <td>
                     <div class="row">
                         <div class="col-xs-6 col-md-3 comic-list" ng-repeat="comic in comics">
-                            <a href="#" class="thumbnail">
+                            <a ng-href="/Comics/{{comic.ComicId}}" class="thumbnail">
                                 <img ng-src="{{comic.ImageUrl}}" />
                                 <div class="caption">
                                     {{comic.Title}}

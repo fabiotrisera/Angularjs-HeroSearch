@@ -12,3 +12,6 @@
 table.character-list tr td:hover {
   cursor: pointer;
 }
+.comic-thumbnail {
+  width: 200px;
+}

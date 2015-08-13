@@ -5,25 +5,16 @@
         .module('MarvelApp')
         .controller('ComicDetailController', ComicDetailController);
 
-    ComicDetailController.$inject = ['$scope', '$routeParams', 'Characters', 'Comics'];
+    ComicDetailController.$inject = ['$scope', '$routeParams', 'Comics'];
 
-    function ComicDetailController($scope, $routeParams, Characters, Comics) {
-        Characters.query({ characterId: $routeParams.characterId }, function (characters) {
+    function ComicDetailController($scope, $routeParams, Comics) {
+        Comics.query({ comicId: $routeParams.comicId }, function (comics) {
             activate();
 
-            $scope.character = characters[0];
+            $scope.comic = comics[0];
             $scope.crumbs = [
-                { Text: "Characters", Url: "/" },
-                { Text: $scope.character.Name, Url: "" }];
-
-            angular.forEach($scope.character.Comics, function (comic) {
-                Comics.query({ comicId: comic.ComicId }, function (comicDetail) {
-                    $scope.comics.push({
-                        Title: comicDetail[0].Title,
-                        ImageUrl: comicDetail[0].ImageUrl
-                    });
-                });
-            });
+                { Text: "Comics", Url: "/Comics" },
+                { Text: $scope.comic.Title, Url: "" }];
         });
 
 

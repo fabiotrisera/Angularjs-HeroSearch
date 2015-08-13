@@ -20,7 +20,8 @@
                 Comics.query({ comicId: comic.ComicId }, function (comicDetail) {
                     $scope.comics.push({
                         Title: comicDetail[0].Title,
-                        ImageUrl: comicDetail[0].ImageUrl
+                        ImageUrl: comicDetail[0].ImageUrl,
+                        ComicId: comicDetail[0].Id
                     });
                 });
             });
