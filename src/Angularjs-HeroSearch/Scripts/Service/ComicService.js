@@ -15,7 +15,6 @@
                     transformResponse: function (response) {
                         var res = angular.fromJson(response);
                         return $.map(res.data.results, function (item) {
-                            console.log(item);
                             return {
                                 Id: item.id,
                                 Title: item.title,

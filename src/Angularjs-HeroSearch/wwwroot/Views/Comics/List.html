@@ -11,13 +11,10 @@
     <div class="row">
         &nbsp;
     </div>
-    <div class="row">
-        <div class="col-xs-6 col-md-2 comic-list" ng-repeat="comic in comics">
-            <a ng-href="/Comics/{{comic.Id}}" class="thumbnail">
-                <img ng-src="{{comic.ImageUrl}}" />
-                <div class="caption">
-                    {{comic.Title}}
-                </div>
+    <div class="row" ng-repeat="comic in comics" ng-init="parentIndex = $index" ng-if="$index % 6 === 0">
+        <div class="col-md-2 comic-list" ng-repeat="i2 in [0,1,2,3,4,5]" ng-if="parentIndex + i2 < comics.length">
+            <a ng-href="/Comics/{{comics[parentIndex + i2].Id}}" class="thumbnail">
+                <img ng-src="{{comics[parentIndex + i2].ImageUrl}}" />
             </a>
         </div>
     </div>

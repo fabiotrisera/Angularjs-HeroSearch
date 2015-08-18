@@ -1,6 +1,6 @@
 ﻿<div>
-    <div data-breadcrumb 
-         data-crumbs="crumbs" ></div>
+    <div data-breadcrumb
+         data-crumbs="crumbs"></div>
     <table class="table table-striped table-bordered">
         <tbody>
             <tr>
@@ -22,17 +22,17 @@
             <tr ng-show="comics.length > 0">
                 <th>Comics</th>
                 <td>
-                    <div class="row">
-                        <div class="col-xs-6 col-md-3 comic-list" ng-repeat="comic in comics">
-                            <a ng-href="/Comics/{{comic.ComicId}}" class="thumbnail">
-                                <img ng-src="{{comic.ImageUrl}}" />
+                    <div class="row" ng-repeat="comic in comics" ng-init="parentIndex = $index" ng-if="$index % 4 === 0">
+                        <div class="col-md-3 comic-list" ng-repeat="i2 in [0,1,2,3]" ng-if="parentIndex + i2 < comics.length">
+                            <h3>{{parentIndex}} - {{$index}}</h3>
+                            <a ng-href="/Comics/{{comics[parentIndex + i2].ComicId}}" class="thumbnail">
+                                <img ng-src="{{comics[parentIndex + i2].ImageUrl}}" />
                                 <div class="caption">
-                                    {{comic.Title}}
+                                    {{comics[parentIndex + i2].Title}}
                                 </div>
                             </a>
                         </div>
                     </div>
-                    
                 </td>
             </tr>
             <tr ng-show="character.Events.length > 0">
