@@ -24,7 +24,6 @@
                 <td>
                     <div class="row" ng-repeat="comic in comics" ng-init="parentIndex = $index" ng-if="$index % 4 === 0">
                         <div class="col-md-3 comic-list" ng-repeat="i2 in [0,1,2,3]" ng-if="parentIndex + i2 < comics.length">
-                            <h3>{{parentIndex}} - {{$index}}</h3>
                             <a ng-href="/Comics/{{comics[parentIndex + i2].ComicId}}" class="thumbnail">
                                 <img ng-src="{{comics[parentIndex + i2].ImageUrl}}" />
                                 <div class="caption">
