@@ -1,13 +1,16 @@
 ﻿(function () {
     'use strict';
-    
-    config.$inject = ['$routeProvider', '$locationProvider'];
 
     angular.module('MarvelApp', [
-           'ngRoute', 'ngAnimate', 'CharacterService', 'ComicService'
-        ]).config(config);
+           'ngRoute', 'ngAnimate', 'ngResource'
+    ]).constant("MARVEL", {
+        "API_KEY": "193de468b42a867fa40e7bac25106814",
+        "BASE_URL" : "http://gateway.marvel.com:80/v1/public"
+    }).config(marvelConfig);
 
-    function config($routeProvider, $locationProvider){
+    marvelConfig.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
+
+    function marvelConfig($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider
         .when('/', {
             templateUrl: '/Views/Characters/List.html',
@@ -27,5 +30,30 @@
         });
 
         $locationProvider.html5Mode(true);
+        
+        //add interceptor
+        $httpProvider.interceptors.push(marvelInterceptor);
     }
+
+    marvelInterceptor.$inject = ['MARVEL'];
+
+    function marvelInterceptor(MARVEL) {
+        return {
+            "request": function (config) {
+                    
+                //add api key for every request to marvel
+                if (config.url.indexOf("gateway.marvel.com") > -1) {
+                    if (!config.params) {
+                        config.params = {};
+                    }
+
+                    //add marvel api key
+                    config.params.apikey = MARVEL.API_KEY;
+                }
+
+                return config;
+            }
+        };
+    }
+
 })();

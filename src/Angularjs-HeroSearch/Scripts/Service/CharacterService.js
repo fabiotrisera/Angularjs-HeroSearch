@@ -1,13 +1,10 @@
 ﻿(function () {
     'use strict';
 
-    var CharacterService = angular.module('CharacterService', ['ngResource']);
-
-
-    CharacterService.factory('Characters', ['$resource',
-        function ($resource) {
-            return $resource("http://gateway.marvel.com:80/v1/public/characters/:characterId", {
-                apikey: "193de468b42a867fa40e7bac25106814",
+    angular.module('MarvelApp')
+        .factory('Characters', ['$resource', 'MARVEL',
+        function ($resource, MARVEL) {
+            return $resource( MARVEL.BASE_URL + "/characters/:characterId", {
                 characterId: "@characterId"
             }, {
                 query: {

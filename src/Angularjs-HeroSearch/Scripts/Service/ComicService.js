@@ -1,13 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    var ComicService = angular.module('ComicService', ['ngResource']);
-
-
-    ComicService.factory('Comics', ['$resource',
-        function ($resource) {
-            return $resource("http://gateway.marvel.com:80/v1/public/comics/:comicId", {
-                apikey: "193de468b42a867fa40e7bac25106814",
+    angular.module('MarvelApp')
+        .factory('Comics', ['$resource', 'MARVEL',
+        function ($resource, MARVEL) {
+            return $resource( MARVEL.BASE_URL + "/comics/:comicId", {
+                apikey: MARVEL.API_KEY,
                 comicId: "@comicId"
             }, {
                 query: {
