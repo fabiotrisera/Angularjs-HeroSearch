@@ -8,16 +8,14 @@
     ComicDetailController.$inject = ['$scope', '$routeParams', 'Comics'];
 
     function ComicDetailController($scope, $routeParams, Comics) {
-        Comics.query({ comicId: $routeParams.comicId }, function (comics) {
-            activate();
+        activate();
 
-            $scope.comic = comics[0];
+        Comics.get({ comicId: $routeParams.comicId }).$promise.then(function (comics) {
+            $scope.comic = comics;
             $scope.crumbs = [
                 { Text: "Comics", Url: "/Comics" },
                 { Text: $scope.comic.Title, Url: "" }];
         });
-
-
 
         function activate() {
             $scope.character = {};

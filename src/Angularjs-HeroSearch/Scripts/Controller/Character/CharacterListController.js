@@ -12,10 +12,8 @@
         $scope.characters = Characters.query();
         
         $scope.search = function () {
-            Characters.query({
+            $scope.characters = Characters.query({
                 nameStartsWith: $scope.searchName
-            }, function (result) {
-                $scope.characters = result;
             });
         };
 

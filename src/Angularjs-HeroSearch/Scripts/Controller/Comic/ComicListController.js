@@ -14,15 +14,11 @@
             $scope.comics = comics;
 
             $scope.search = function () {
-                Comics.query({
+                $scope.comics = Comics.query({
                     titleStartsWith: $scope.searchName
-                }, function (result) {
-                    $scope.comics = result;
                 });
             };
         });
-
-
 
         function activate() {
             $scope.comics = [];
