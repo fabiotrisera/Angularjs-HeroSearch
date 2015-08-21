@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('MarvelApp')
+    angular.module('MarvelResource')
         .factory('Comics', ['$resource', 'MARVEL',
         function ($resource, MARVEL) {
             var comic = $resource( MARVEL.BASE_URL + "/comics/:comicId", {

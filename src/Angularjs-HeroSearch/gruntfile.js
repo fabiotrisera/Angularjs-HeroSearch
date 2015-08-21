@@ -13,11 +13,14 @@ module.exports = function (grunt) {
     grunt.initConfig({
         uglify: {
             my_target: {
-                files: { 'wwwroot/app.js' : ["Scripts/app.js", "Scripts/**/*.js" ] }
+                files: {
+                    'wwwroot/app.js': ["Scripts/app.js", "Scripts/**/*.js"],
+                    'wwwroot/marvelResource.js' : ["Resources/Marvel.js", "Resources/Marvel/*.js"]
+                }
             }
         },
         jshint:{
-          files: ["Scripts/**/*.js"]  
+          files: ["Scripts/**/*.js", "Resources/**/*.js"]
         },
         less: {
             options: {
@@ -40,7 +43,7 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ["Scripts/**/*.js"],
+                files: ["Scripts/**/*.js", "Resources/**/*.js"],
                 tasks: ["uglify", "jshint"]
             },
             less: {

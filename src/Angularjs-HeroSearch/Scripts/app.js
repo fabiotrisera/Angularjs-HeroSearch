@@ -2,15 +2,8 @@
     'use strict';
 
     angular.module('MarvelApp', [
-           'ngRoute', 'ngAnimate', 'ngResource'
-    ]).constant("MARVEL", {
-        "API_KEY": "193de468b42a867fa40e7bac25106814",
-        "BASE_URL" : "http://gateway.marvel.com:80/v1/public"
-    }).config(marvelConfig);
-
-    marvelConfig.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
-
-    function marvelConfig($routeProvider, $locationProvider, $httpProvider) {
+           'ngRoute', 'ngAnimate', 'ngResource', 'MarvelResource'
+    ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function marvelConfig($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider
         .when('/', {
             templateUrl: '/Views/Characters/List.html',
@@ -27,13 +20,21 @@
         .when("/Comics/:comicId", {
             templateUrl: 'Views/Comics/Detail.html',
             controller: 'ComicDetailController'
+        })
+        .when("/Events", {
+            templateUrl: 'Views/Events/List.html',
+            controller: 'EventListController'
+        })
+        .when("/Events/:eventId", {
+            templateUrl: 'Views/Events/Detail.html',
+            controller: 'EventDetailController'
         });
 
         $locationProvider.html5Mode(true);
-        
+
         //add interceptor
         $httpProvider.interceptors.push(marvelInterceptor);
-    }
+    }]);
 
     marvelInterceptor.$inject = ['MARVEL'];
 

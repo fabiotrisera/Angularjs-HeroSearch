@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('MarvelApp')
+    angular.module('MarvelResource')
         .factory('Characters', ['$resource', 'MARVEL', 'Comics',
         function ($resource, MARVEL, Comics) {
 

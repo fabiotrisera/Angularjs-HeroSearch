@@ -1,0 +1,21 @@
+﻿<div>
+    <div class="row">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="inputSearchEvent">Search Event</label>
+                <input type="text" class="form-control" id="inputSearchEvent" ng-model="searchName" placeholder="Input Event Name..." />
+            </div>
+            <button type="submit" class="btn btn-default btn-primary" ng-click="searchEvent()"><i class="fa fa-search"></i> Search</button>
+        </form>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row" ng-repeat="event in events" ng-init="parentIndex = $index" ng-if="$index % 6 === 0">
+        <div class="col-md-2 comic-list" ng-repeat="i2 in [0,1,2,3,4,5]" ng-if="parentIndex + i2 < events.length">
+            <a ng-href="/Events/{{events[parentIndex + i2].Id}}" class="thumbnail">
+                <img ng-src="{{events[parentIndex + i2].ImageUrl}}" />
+            </a>
+        </div>
+    </div>
+</div>

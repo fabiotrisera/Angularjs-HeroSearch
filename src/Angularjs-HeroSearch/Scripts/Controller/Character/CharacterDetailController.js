@@ -3,27 +3,23 @@
 
     angular
         .module('MarvelApp')
-        .controller('CharacterDetailController', CharacterDetailController);
+        .controller('CharacterDetailController', ['$scope', '$routeParams', 'Characters', 'Comics', function CharacterDetailController($scope, $routeParams, Characters, Comics) {
+            activate();
 
-    CharacterDetailController.$inject = ['$scope', '$routeParams', 'Characters', 'Comics'];
+            Characters.get({ characterId: $routeParams.characterId }).$promise.then(function (character) {
+                $scope.character = character;
+                $scope.comics = character.getComics(character.Comics);
 
-    function CharacterDetailController($scope, $routeParams, Characters, Comics) {
-        activate();
+                $scope.crumbs = [
+                    { Text: "Characters", Url: "/" },
+                    { Text: $scope.character.Name, Url: "" }];
 
-        Characters.get({ characterId: $routeParams.characterId }).$promise.then(function (character) {
-            $scope.character = character;
-            $scope.comics = character.getComics(character.Comics);
+            });
 
-            $scope.crumbs = [
-                { Text: "Characters", Url: "/" },
-                { Text: $scope.character.Name, Url: "" }];
-
-        });
-
-        function activate() {
-            $scope.character = {};
-            $scope.comics = [];
-            $scope.crumbs = [];
-        }
-    }
+            function activate() {
+                $scope.character = {};
+                $scope.comics = [];
+                $scope.crumbs = [];
+            }
+        }]);
 })();

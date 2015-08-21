@@ -1,0 +1,24 @@
+﻿<div>
+    <div data-breadcrumb
+         data-crumbs="crumbs"></div>
+    <table class="table table-striped table-bordered">
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <div class="media">
+                        <div class="media-body">
+                            <h3 class="media-heading">{{event.Title}}</h3>
+                        </div>
+                        <div class="media-right">
+                            <img ng-src="{{event.ImageUrl}}" class="media-object comic-thumbnail" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-show="comic.Description !== null">
+                <th>Description</th>
+                <td>{{event.Description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
