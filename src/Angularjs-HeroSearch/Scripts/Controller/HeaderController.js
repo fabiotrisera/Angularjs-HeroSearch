@@ -8,4 +8,4 @@
                 return viewLocation == $location.path();
             };
         }]);
-})();
+})(); 

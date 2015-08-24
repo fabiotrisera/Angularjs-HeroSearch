@@ -9,6 +9,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
+    grunt.loadNpmTasks("grunt-cache-breaker");
 
     grunt.initConfig({
         uglify: {
@@ -17,6 +18,18 @@ module.exports = function (grunt) {
                     'wwwroot/app.js': ["Scripts/app.js", "Scripts/**/*.js"],
                     'wwwroot/marvelResource.js' : ["Resources/Marvel.js", "Resources/Marvel/*.js"]
                 }
+            }
+        },
+        cachebreaker: {
+            options: {
+                match: ['app.js'],
+                replacement: 'md5',
+                src: {
+                    path: 'wwwroot/app.js'
+                }
+            },
+            files: {
+                src: ['wwwroot/index.html']
             }
         },
         jshint:{
@@ -44,7 +57,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: ["Scripts/**/*.js", "Resources/**/*.js"],
-                tasks: ["uglify", "jshint"]
+                tasks: ["uglify", "jshint", "cachebreaker"]
             },
             less: {
                 files: ["Content/*.less"],
@@ -58,5 +71,5 @@ module.exports = function (grunt) {
     });
 
     //define tasks
-    grunt.registerTask("default", ["uglify", "watch", "jshint", "less", "cssmin"]);
+    grunt.registerTask("default", ["uglify", "watch", "jshint", "less", "cssmin", "cachebreaker"]);
 };
