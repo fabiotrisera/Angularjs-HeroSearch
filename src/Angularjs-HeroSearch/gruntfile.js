@@ -22,11 +22,12 @@ module.exports = function (grunt) {
         },
         cachebreaker: {
             options: {
-                match: ['app.js'],
-                replacement: 'md5',
-                src: {
-                    path: 'wwwroot/app.js'
-                }
+                match: [{
+                    'app.js': 'wwwroot/app.js',
+                    'marvelResource.js': 'wwwroot/marvelResource.js',
+                    'site.min.css' : 'wwwroot/site.min.css'
+                }],
+                replacement: 'md5'
             },
             files: {
                 src: ['wwwroot/index.html']
@@ -65,7 +66,7 @@ module.exports = function (grunt) {
             },
             cssmin: {
                 files: ["Content/*.css"],
-                tasks: ["cssmin"]
+                tasks: ["cssmin", "cachebreaker"]
             }
         }
     });

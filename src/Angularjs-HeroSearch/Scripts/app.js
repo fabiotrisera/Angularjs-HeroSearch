@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('MarvelApp', [
+    angular.module('MarvelApp' , [
            'ngRoute', 'ngAnimate', 'ngResource', 'MarvelResource'
     ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function marvelConfig($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider
