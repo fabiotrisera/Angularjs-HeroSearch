@@ -1,6 +1,19 @@
 ﻿(function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name Comics
+     * 
+     * @requires $resource
+     * @requires MARVEL
+     * 
+     * @description
+     * This is Comic resource service factory. the return Comic resource have the following property
+     * - query - return a list of comics based on search parameter
+     * - get - return a single comic
+     * 
+     */
     angular.module('MarvelResource')
         .factory('Comics', ['$resource', 'MARVEL',
         function ($resource, MARVEL) {

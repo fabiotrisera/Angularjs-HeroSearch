@@ -1,6 +1,21 @@
 ﻿(function () {
     'use strict';
-
+    
+    /**
+     * @ngdoc service
+     * @name Characters
+     * 
+     * @requires $resource
+     * @requires MARVEL
+     * @requires Comics
+     * 
+     * @description
+     * This is Character resource service factory. the character resource have the following property
+     * - query - return a list of character based on search parameter
+     * - get - return a single character
+     * - getComics - get top 20 comics which related to this character
+     * 
+     */
     angular.module('MarvelResource')
         .factory('Characters', ['$resource', 'MARVEL', 'Comics',
         function ($resource, MARVEL, Comics) {

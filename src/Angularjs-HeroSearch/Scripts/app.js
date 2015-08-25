@@ -9,8 +9,6 @@
      * - View routing using ngRoute
      * - URL to be using HTML5 mode, legacy browser will default to using #/
      * - HTTP interceptor 
-     * 
-     * @requires MarvelResource, ngRoute, ngAnimate, ngResource
      *
      */
     angular.module('MarvelApp' , [

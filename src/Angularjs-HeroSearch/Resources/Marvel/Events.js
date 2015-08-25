@@ -1,6 +1,19 @@
 ﻿(function () {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name Events
+     * 
+     * @requires $resource
+     * @requires MARVEL
+     * 
+     * @description
+     * This is Events resource service factory. the event resource have the following property
+     * - query - return a list of events based on search parameter
+     * - get - return a single event
+     * 
+     */
     angular
         .module('MarvelResource')
         .factory('Events', ['$resource', 'MARVEL', function Events($resource, MARVEL) {

@@ -1,6 +1,14 @@
 ﻿(function() {
     'use strict';
 
+    /**
+     * @ngdoc directive
+     * @name breadcrumb
+     * @restricts A
+     * @element div
+     * @scope
+     */
+
     angular
         .module('MarvelApp')
         .directive('breadcrumb', ['$window', function Breadcrumb($window) {
