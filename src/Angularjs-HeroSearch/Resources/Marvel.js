@@ -1,6 +1,15 @@
 ﻿(function () {
     'use strict';
 
+    /**
+     * @ngdoc overview
+     * @name MarvelResource
+     *
+     * @description
+     * Use this is the main module for marver resource. it contains the constant value for the following items
+     * - API_KEY : this is the API key obtain from marvel.com
+     * - BASE_URL : this is the base url of Marvel API
+     */
     angular.module('MarvelResource', [
         // Angular modules 
         'ngResource'

@@ -9,7 +9,9 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-cssmin": "^0.13.0",
+    "grunt-contrib-clean": "^0.6.0",
     "grunt-cache-breaker": "^2.0.1",
+    "grunt-ngdocs": "^0.2.9",
     "bower": "1.4.1"
   },
   "dependencies": {

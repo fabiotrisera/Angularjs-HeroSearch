@@ -9,7 +9,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
+    grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-cache-breaker");
+    grunt.loadNpmTasks('grunt-ngdocs');
 
     grunt.initConfig({
         uglify: {
@@ -33,6 +35,21 @@ module.exports = function (grunt) {
                 src: ['wwwroot/index.html']
             }
         },
+        ngdocs: {
+            options: {
+                dest: 'wwwroot/docs',
+                html5Mode: true
+            },
+            resource: {
+                src: ['Resources/**/*.js'],
+                title: 'Marvel Resource'
+            },
+            main: {
+                src: ['Scripts/**/*.js'],
+                title: 'Marvel App'
+            }
+        },
+        clean: ['wwwroot/docs'],
         jshint:{
           files: ["Scripts/**/*.js", "Resources/**/*.js"]
         },
@@ -58,7 +75,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: ["Scripts/**/*.js", "Resources/**/*.js"],
-                tasks: ["uglify", "jshint", "cachebreaker"]
+                tasks: ["uglify", "jshint", "cachebreaker", "clean", "ngdocs:resource", "ngdocs:main"]
             },
             less: {
                 files: ["Content/*.less"],

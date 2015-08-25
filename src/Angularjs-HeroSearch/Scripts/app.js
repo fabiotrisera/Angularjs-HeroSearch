@@ -1,6 +1,18 @@
 ﻿(function () {
     'use strict';
-
+    /**
+     * @ngdoc overview
+     * @name MarvelApp
+     *
+     * @description
+     * The this is the main module of MarvelApp. the following things are specify here
+     * - View routing using ngRoute
+     * - URL to be using HTML5 mode, legacy browser will default to using #/
+     * - HTTP interceptor 
+     * 
+     * @requires MarvelResource, ngRoute, ngAnimate, ngResource
+     *
+     */
     angular.module('MarvelApp' , [
            'ngRoute', 'ngAnimate', 'ngResource', 'MarvelResource'
     ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function marvelConfig($routeProvider, $locationProvider, $httpProvider) {
@@ -38,6 +50,21 @@
 
     marvelInterceptor.$inject = ['MARVEL'];
 
+
+    /**
+     * @ngdoc interface
+     * @object function
+     *
+     * @param {constant} MARVEL
+     * this is the constant which contains all marvel related property 
+     *
+     * @name marvelInterceptor
+     *
+     * @description
+     * The method intercept each http request that goes to 'gate.marvel.com'
+     * and add extra query string 'apikey' which value comes from the constant
+     *
+     */
     function marvelInterceptor(MARVEL) {
         return {
             "request": function (config) {
