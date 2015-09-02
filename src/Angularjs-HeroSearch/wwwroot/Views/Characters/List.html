@@ -20,5 +20,10 @@
                 </a>
             </div>
         </div>
+        <div class="row" ng-show="total >= offset + limit">
+            <div class="cold-md-12">
+                <button type="button" ng-click="loadNext()" class="btn btn-primary btn-lg btn-block">Load More..</button>
+            </div>
+        </div>
     </div>
 </div>

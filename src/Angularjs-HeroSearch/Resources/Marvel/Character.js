@@ -26,9 +26,20 @@
                 query: {
                     method: "GET",
                     transformResponse: function (response) {
-                        return transformCharacter(response);
+                        var characters = transformCharacter(response);
+                        var res = angular.fromJson(response);
+
+                        var data = 
+                        {
+                            limit: res.data.limit,
+                            offset: res.data.offset,
+                            total: res.data.total,
+                            characters : characters
+                        };
+
+                        return data;
                     },
-                    isArray: true
+                    isArray: false
                 },
                 get: {
                     method: "GET",
@@ -75,25 +86,25 @@
                 Comics: $.map(item.comics.items, function (comic) {
                     return {
                         ComicName: comic.name,
-                        ComicId: comic.resourceURI.substr(comic.resourceURI.lastIndexOf('/') + 1)
+                        ComicId: comic.resourceURI !== false ? comic.resourceURI.substr(comic.resourceURI.lastIndexOf('/') + 1) : 0
                     };
                 }),
                 Events: $.map(item.events.items, function (event) {
                     return {
                         EventName: event.name,
-                        EventId: event.resourceURI.substr(event.resourceURI.lastIndexOf('/') + 1)
+                        EventId: event.resourceURI !== false ? event.resourceURI.substr(event.resourceURI.lastIndexOf('/') + 1) : 0
                     };
                 }),
                 Series: $.map(item.series.items, function (series) {
                     return {
                         SeriesName: series.name,
-                        SeriesId: series.resourceURI.substr(series.resourceURI.lastIndexOf('/') + 1)
+                        SeriesId: series.resourceURI !== false ? series.resourceURI.substr(series.resourceURI.lastIndexOf('/') + 1) : 0
                     };
                 }),
                 Stories: $.map(item.stories.items, function (story) {
                     return {
                         StoryName: story.name,
-                        StoryId: story.resourceURI.substr(story.resourceURI.lastIndexOf('/') + 1)
+                        StoryId: story.resourceURI !== false ? story.resourceURI.substr(story.resourceURI.lastIndexOf('/') + 1) : 0
                     };
                 }),
                 Links: $.map(item.urls, function (url) {
