@@ -5,15 +5,15 @@
      * @name MarvelApp
      *
      * @description
-     * The this is the main module of MarvelApp. the following things are specify here
+     * The this is the main module of MarvelApp. the following things are configure here
      * - View routing using ngRoute
      * - URL to be using HTML5 mode, legacy browser will default to using #/
      * - HTTP interceptor 
-     *
+     * - CFP Loading bar plugin setup
      */
     angular.module('MarvelApp' , [
-           'ngRoute', 'ngAnimate', 'ngResource', 'MarvelResource'
-    ]).config(['$routeProvider', '$locationProvider', '$httpProvider', function marvelConfig($routeProvider, $locationProvider, $httpProvider) {
+           'ngRoute', 'ngAnimate', 'ngResource', 'MarvelResource', 'angular-loading-bar'
+    ]).config(['$routeProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider', function marvelConfig($routeProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
         $routeProvider
         .when('/', {
             templateUrl: '/Views/Characters/List.html',
@@ -44,6 +44,9 @@
 
         //add interceptor
         $httpProvider.interceptors.push(marvelInterceptor);
+
+        //setup loading bar
+        cfpLoadingBarProvider.includeSpinner = true;
     }]);
 
     marvelInterceptor.$inject = ['MARVEL'];

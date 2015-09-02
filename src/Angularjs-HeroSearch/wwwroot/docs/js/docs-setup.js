@@ -63,8 +63,8 @@ NG_DOCS={
       "shortName": "MarvelApp",
       "type": "overview",
       "moduleName": "MarvelApp",
-      "shortDescription": "The this is the main module of MarvelApp. the following things are specify here",
-      "keywords": "browser default html5 http interceptor legacy main marvelapp mode module ngroute overview routing things url view"
+      "shortDescription": "The this is the main module of MarvelApp. the following things are configure here",
+      "keywords": "bar browser cfp configure default html5 http interceptor legacy loading main marvelapp mode module ngroute overview plugin routing setup things url view"
     },
     {
       "section": "main",
